@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="nav-bar">
-		
+
 	</div>
 	<div id="app">
 		<div class="product">
@@ -15,18 +15,18 @@
 				<img  v-bind:src="imagen">
 			</div>
 			<div class="product-info">
-				<h1>{{titulo}}</h1>
+				<h1>{{title}} </h1>
 				<p v-if="inventario > 0">Activo</p>
 				<p v-else-if="inventario > 0   && inventario < 10">Pronto se acabara</p>
 				<p v-else="inventario > 10">producto terminado</p>
 				<ul>
 					<li v-for="item in producto">{{item.descripcion}}</li>
 				</ul>
-				<div v-for="item in lista" 
-				:key="item.id" 
+				<div v-for="(item, index) in lista"
+				:key="item.id"
 				class="color-box"
 				:style="{ background: item.color}"
-				@mouseover="elegir(item.imagen)">
+				@mouseover="elegir(index)">
 				</div>
 				<div class="cart">
 					{{contar}}
@@ -34,9 +34,9 @@
 				<button v-on:click="carrito()" class="btn btn-primary">Carrito</button>
 			</div>
 		</div>
-		
-		
-		
+
+
+
 	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

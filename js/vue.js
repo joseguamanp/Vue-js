@@ -1,10 +1,12 @@
 	var vm = new Vue({
 		el: "#app",
 		data:{
-			titulo:"Venta de medias",
-			stock:true,
-			imagen:"img/vmSocks-green-onWhite.jpg",
-			inventario:8,
+			titulo:"Venta ",
+			subtitulo:" de producto",
+			selectedVariable:0,
+			//stock:true,
+			//imagen:"img/vmSocks-green-onWhite.jpg",
+			//inventario:8,
 			producto:
 			[
 			{
@@ -21,22 +23,38 @@
 			{
 				id:1,
 				color:"green",
-				imagen:"img/vmSocks-green-onWhite.jpg"
+				imagen:"img/vmSocks-green-onWhite.jpg",
+				cantidad:10
 			},
 			{
 				id:2,
 				color:"blue",
-				imagen:"img/vmSocks-blue-onWhite.jpg"
+				imagen:"img/vmSocks-blue-onWhite.jpg",
+				cantidad:0
 			}
 			],
 			contar:0
 		},
+		computed:{
+			title(){
+				return this.titulo+" "+this.subtitulo
+			},
+			imagen(){
+				return this.lista[this.selectedVariable].imagen
+			},
+			inventario(){
+				return this.lista[this.selectedVariable].cantidad
+			}
+		},
 		methods:{
-			elegir(img){
-				this.imagen=img
+			elegir(index){
+				this.selectedVariable=index
+				console.log(index)
+				//this.imagen=img
 			},
 			carrito(){
 				this.contar+=1;
 			}
+
 		}
 	});
