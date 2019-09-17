@@ -16,16 +16,22 @@
 			</div>
 			<div class="product-info">
 				<h1>{{titulo}}</h1>
+				<p v-if="inventario > 0">Activo</p>
+				<p v-else-if="inventario > 0   && inventario < 10">Pronto se acabara</p>
+				<p v-else="inventario > 10">producto terminado</p>
 				<ul>
 					<li v-for="item in producto">{{item.descripcion}}</li>
 				</ul>
-				<div v-for="item in lista">
-					<p @mouseover="elegir(item.imagen)">{{item.color}}</p>
+				<div v-for="item in lista" 
+				:key="item.id" 
+				class="color-box"
+				:style="{ background: item.color}"
+				@mouseover="elegir(item.imagen)">
 				</div>
 				<div class="cart">
 					{{contar}}
 				</div>
-				<button v-on:click="contar+=1" class="btn btn-primary">Carrito</button>
+				<button v-on:click="carrito()" class="btn btn-primary">Carrito</button>
 			</div>
 		</div>
 		

@@ -4,6 +4,7 @@
 			titulo:"Venta de medias",
 			stock:true,
 			imagen:"img/vmSocks-green-onWhite.jpg",
+			inventario:8,
 			producto:
 			[
 			{
@@ -33,6 +34,9 @@
 		methods:{
 			elegir(img){
 				this.imagen=img
+			},
+			carrito(){
+				this.contar+=1;
 			}
 		}
 	});
